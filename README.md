@@ -22,3 +22,57 @@ ServerProxy is a Android library to provide easy to use classes to create a loca
 - isWorkDone: Whether or not the file is done being downloaded
 - onStart: called when the streaming starts
 - onStop: called when the streaming is done
+
+**Downloadtask**: Runnable to download requested file and implement previous files
+
+EXAMPLE
+
+```
+new DownloadTask(url, new String[]{"Referer"}, new String[]{"www.google.com"}, requireContext(), () -> {
+
+                BufferProxy bufferProxy = new BufferProxy(requireContext());
+                bufferProxy.setBufferFile(new BufferFile() {
+                    @Override
+                    public File getFile() {
+                        return new File(requireContext().getExternalCacheDir(), "FILE_PLACEHOLDER.mp4");
+                    }
+
+                    @Override
+                    public Long getContentLength() {
+                        return null;
+                    }
+
+                    @Override
+                    public long getEstimatedSize() {
+                        return 0;
+                    }
+
+                    @Override
+                    public boolean isWorkDone() {
+                        return false;
+                    }
+
+                    @Override
+                    public void onStart() {
+
+                    }
+
+                    @Override
+                    public void onStop() {
+               
+                    }
+
+                    @Override
+                    public void onResume() {
+
+                    }
+                });
+                bufferProxy.start();
+                String proxy = bufferProxy.getPrivateAddress("FILE_PLACEHOLDER.mp4");
+
+                ***MORE CODE***
+
+
+            }).run();
+
+```
