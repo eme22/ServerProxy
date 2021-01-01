@@ -76,3 +76,11 @@ new DownloadTask(url, new String[]{"Referer"}, new String[]{"www.google.com"}, r
             }).run();
 
 ```
+
+IMPLEMENTATION 
+
+```
+
+implementation 'com.github.eme22:ServerProxy:0.1'
+
+```
